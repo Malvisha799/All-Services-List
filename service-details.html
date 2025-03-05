@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles for service details page */
+    .service-details-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background-color: #f3f4f6;
+      border: none;
+      border-radius: 6px;
+      color: #4b5563;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 24px;
+    }
+    
+    .back-button:hover {
+      background-color: #e5e7eb;
+    }
+    
+    .service-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    
+    .service-title {
+      margin: 0;
+    }
+    
+    .service-category {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: #fbbf24;
+      color: #1f2937;
+      font-weight: 600;
+      border-radius: 4px;
+      font-size: 0.875rem;
+    }
+    
+    .service-type {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: #e5e7eb;
+      color: #4b5563;
+      font-weight: 500;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      margin-left: 8px;
+    }
+    
+    .service-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    
+    @media (min-width: 768px) {
+      .service-content {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+    
+    .service-description {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-description h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    
+    .service-description p {
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .service-description ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    
+    .service-description li {
+      margin-bottom: 8px;
+      color: #4b5563;
+    }
+    
+    .service-sidebar {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-sidebar h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    
+    .cta-button {
+      display: block;
+      width: 100%;
+      padding: 12px 24px;
+      background-color: #fbbf24;
+      color: #1f2937;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 24px;
+    }
+    
+    .cta-button:hover {
+      background-color: #f59e0b;
+    }
+    
+    .price-info {
+      margin-bottom: 16px;
+    }
+    
+    .price-label {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    
+    .price-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+    
+    .timeline-info {
+      margin-bottom: 16px;
+    }
+    
+    .timeline-label {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    
+    .timeline-value {
+      font-weight: 600;
+      color: #1f2937;
+    }
+    
+    .related-services {
+      margin-top: 48px;
+    }
+    
+    .related-services h2 {
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    
+    .related-services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    
+    .related-service-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    
+    .related-service-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .related-service-name {
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 8px;
+    }
+    
+    .related-service-category {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="service-details-container">
+    <!-- Back Button -->
+    <button class="back-button" id="backButton">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+      </svg>
+      Back to Services
+    </button>
+    
+    <!-- Service Header -->
+    <div class="service-header" id="serviceHeader">
+      <!-- Will be populated by JavaScript -->
+    </div>
+    
+    <!-- Service Content -->
+    <div class="service-content">
+      <!-- Service Description -->
+      <div class="service-description" id="serviceDescription">
+        <!-- Will be populated by JavaScript -->
+      </div>
+      
+      <!-- Service Sidebar -->
+      <div class="service-sidebar" id="serviceSidebar">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </div>
+    
+    <!-- Related Services -->
+    <div class="related-services" id="relatedServices">
+      <!-- Will be populated by JavaScript -->
+    </div>
+  </div>
+  
+  <script src="service-details.js"></script>
+</body>
+</html>
